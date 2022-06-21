@@ -1,5 +1,5 @@
 export Genotype, Phenotype, Environment, Trainer, Evaluation, Selector, Mutator, Unit
-export express, process!, fitness, train!, evaluate!, push!, mutate, inherit, nparents, nchildren, inputform, outputform, properties
+export express, process!, reset!, fitness, train!, evaluate!, push!, mutate, inherit, nparents, nchildren, inputform, outputform, properties
 export NoTrainer, Property, Average, Transform
 export @Property_str
 

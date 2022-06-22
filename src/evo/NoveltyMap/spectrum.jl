@@ -82,6 +82,13 @@ distance(a::Spectrum, b::Spectrum; Fnorm = norm) = distance(promote(a, b)...; Fn
 function distance(a::Spectrum{T}, b::Spectrum{T}; Fnorm::Function = norm) where {T}
     Fnorm(a.Values - b.Values)
 end
+function distance(a::Spectrum{T}, b::Spectrum{T}; Fnorm::Function = norm) where {T <: Integer}
+    sumA = sum(a.Values)
+    sumA ≈ 0 && sumA = 1
+    sumB = sum(b.Values)
+    sumD ≈ 0 && sumB = 1
+    Fnorm(a.Values / sumA - b.Values / sumB)
+end
 
 """
 Normalize a `Spectrum` so that `sum(spectrum.Values) == 1`.

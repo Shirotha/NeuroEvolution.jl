@@ -84,9 +84,9 @@ function distance(a::Spectrum{T}, b::Spectrum{T}; Fnorm::Function = norm) where 
 end
 function distance(a::Spectrum{T}, b::Spectrum{T}; Fnorm::Function = norm) where {T <: Integer}
     sumA = sum(a.Values)
-    sumA ≈ 0 && sumA = 1
+    sumA ≈ 0 && (sumA = 1)
     sumB = sum(b.Values)
-    sumD ≈ 0 && sumB = 1
+    sumB ≈ 0 && (sumB = 1)
     Fnorm(a.Values / sumA - b.Values / sumB)
 end
 

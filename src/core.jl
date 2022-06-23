@@ -495,8 +495,8 @@ function process!(u::Unit)
                 train!(u.Trainer, u.Population[i], env)
                 f = 0.0
                 for _ in 1:u.EvaluationCount
-                    reset!(u.Population[i])
                     f += evaluate!(u.Evaluation, u.Population[i], env, u.StepsPerGeneration)
+                    reset!(u.Population[i])
                 end
                 fit[i - i0 + 1] = f / u.EvaluationCount
             end

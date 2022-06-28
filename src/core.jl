@@ -6,6 +6,8 @@ export @Property_str
 using Distributed, DistributedArrays
 using DataStructures
 
+using Random
+
 # FIXME: docs: TYPES macro doesn't work with UnionAll types
 
 """
@@ -531,7 +533,7 @@ function process!(u::Unit)
         end
     end
 
-    u.Genes = distribute(collect(new_population))
+    u.Genes = distribute(shuffle(collect(new_population)))
     u.Population = map(express, u.Genes)
 
     return (fittest, max_fitness)

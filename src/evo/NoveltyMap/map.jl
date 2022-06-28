@@ -70,13 +70,18 @@ Base.push!(map::M, genome::G, fitness::T) where {M <: Map, G <: Genotype, T} =
 function Base.push!(map::M, genome::G, fitness::Float64) where {M <: Map, G <: Genotype}
     (index, spec) = findtarget(map, genome)
     entry = Cell(spec, fitness, genome)
-    isbetter(entry, map.Cells[index]) && (map.Cells[index] = entry)
+    if isbetter(entry, map.Cells[index])
+        map.Cells[index] = entry
+    elseif !ismissing(map.Cells[index])
+        entry =  map.Cells[index]
+        map.Cells[index] = Cell(spec, entry.Fitness, entry.Genome)
+    end
     map.Population == length(map.Cells) && updateMinDistance!(map)
     map
 end
 
 function findtarget(map::M, genome::G) where {M <: Map, G <: Genotype}
-    spec = normalize(spectrum(genome))
+    spec = spectrum(genome)
     if map.Population < length(map.Cells)
         index = (map.Population += 1)
     else

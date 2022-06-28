@@ -33,7 +33,7 @@ struct Mutate <: Mutator{1, 1}
     function Mutate(;
         rng::AbstractRNG = RandomDevice(),
         max_weight::Float64 = 1e9,
-        weight_mutation_change::Float64 = 0.5,
+        weight_mutation_chance::Float64 = 0.5,
         weight_change_percent::Float64 = 1.0,
         add_neuron_chance::Float64 = 0.01,
         remove_neuron_chance::Float64 = 0.01,
@@ -44,7 +44,7 @@ struct Mutate <: Mutator{1, 1}
         neuron_types = Dict(IDENTITY => 1, SIGMOID => 1, THRESHOLD => 1, RANDOM => 1, CONTROL => 1)
     )
         max_weight <= 0 && error("MaximumWeight has to be positive!")
-        0 <= weight_mutation_change <= 1 || error("WeightMutationChance has to be a valid pertentage value!")
+        0 <= weight_mutation_chance <= 1 || error("WeightMutationChance has to be a valid pertentage value!")
         weight_change_percent <= 0 && error("WeightMutationChangePercentage has to be positive!")
         0 <= add_neuron_chance <= 1 || error("AddNeuronChance has to be a valid pertentage value!")
         0 <= remove_neuron_chance <= 1 || error("RemoveNeuronChance has to be a valid pertentage value!")
@@ -58,7 +58,7 @@ struct Mutate <: Mutator{1, 1}
         new(
             rng, 
             max_weight, 
-            weight_mutation_change, 
+            weight_mutation_chance, 
             weight_change_percent, 
             add_neuron_chance, 
             remove_neuron_chance, 

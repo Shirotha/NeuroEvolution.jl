@@ -59,7 +59,7 @@ module SUNA
         # mutate forwards
         rng::AbstractRNG = RandomDevice(),
         max_weight::Float64 = 1e9,
-        weight_mutation_change::Float64 = 0.5,
+        weight_mutation_chance::Float64 = 0.5,
         weight_change_percent::Float64 = 1.0,
         add_neuron_chance::Float64 = 0.01,
         remove_neuron_chance::Float64 = 0.01,
@@ -74,7 +74,7 @@ module SUNA
         mutate = Mutate(;
             rng, 
             max_weight, 
-            weight_mutation_change, 
+            weight_mutation_chance, 
             weight_change_percent, 
             add_neuron_chance, 
             remove_neuron_chance, 

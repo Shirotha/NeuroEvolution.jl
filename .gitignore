@@ -1,5 +1,8 @@
 # Visual Studio Code
-.vscode
+/.vscode
 
 # Julia
-Manifest.toml
+/Manifest.toml
+
+# stored example networks
+/examples/*/

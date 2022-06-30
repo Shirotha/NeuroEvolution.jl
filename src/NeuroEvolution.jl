@@ -6,6 +6,9 @@ module NeuroEvolution
 
     include("core.jl")
 
+    # NEAT
+    include("evo/Speciation.jl")
+
     # SUNA
     include("nn/UnifiedModel.jl")
     include("evo/NoveltyMap.jl")

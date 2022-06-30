@@ -3,7 +3,7 @@ using LinearAlgebra
 using ...NeuroEvolution
 
 export Spectrum
-export spectrum, distance, normalize, spectrumtype
+export spectrum, normalize, spectrumtype#, distance
 
 """
 Represents the spectrum of a `Genotype` using values of type `T`.
